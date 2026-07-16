@@ -13,8 +13,12 @@ function getLocale(request: NextRequest): string | undefined {
   const locales: string[] = i18n.locales
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages()
 
-  const locale = matchLocale(languages, locales, i18n.defaultLocale)
-  return locale
+  try {
+    return matchLocale(languages, locales, i18n.defaultLocale)
+  } catch {
+    // Requests without a valid Accept-Language header (e.g. curl, bots)
+    return i18n.defaultLocale
+  }
 }
 
 export const config = {
