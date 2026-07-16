@@ -1,111 +1,121 @@
-# LaunchPad - Official Strapi Demo
+<p align="center">
+  <img src="LaunchPad.jpg" alt="Strapi LaunchPad + Croct" width="480" />
+</p>
 
-![LaunchPad](./LaunchPad.jpg)
+<h3 align="center">Personalized Strapi demo</h3>
 
-Welcome aboard **LaunchPad**, the official Strapi demo application, where we launch your content into the stratosphere at the speed of _"we-can't-even-measure-it!"_.
-This repository contains the following:
+<p align="center">
+  The official <a href="https://github.com/strapi/LaunchPad">Strapi LaunchPad</a> demo powered by <a href="https://strapi.io">Strapi</a> for content management<br/>and <a href="https://croct.com">Croct</a> for real-time personalization and A/B testing.
+</p>
 
-- A Strapi project with content-types and data already onboard
-- A Next.js client that's primed and ready to fetch the content from Strapi faster than you can say "blast off!"
+---
 
-## 🌌 Get started
+## Background
 
-Strap yourself in! You can get started with this project on your local machine by following the instructions below, or you can [request a private instance on our website](https://strapi.io/demo)
+[LaunchPad](https://github.com/strapi/LaunchPad) is Strapi's official demo: a Strapi project with content types and data ready to go, plus a Next.js client that renders pages composed of dynamic zones managed in the CMS.
 
-## 1. Clone Launchpad
+This project is a fork of LaunchPad that adds [Croct](https://croct.com) on top. With Croct, any dynamic zone component already managed in Strapi becomes personalizable and ready for A/B testing, without changing how you structure or deliver your content.
 
-To infinity and beyond! 🚀 Clone the repo with this command:
+## What's inside
 
-```
-git clone https://github.com/strapi/launchpad.git
-```
+- **A Strapi project** with content types and demo data already onboard
+- **A Next.js client** that fetches and renders the content from Strapi
+- **Croct integration** that makes dynamic zone components personalizable: content editors map any Strapi component to a Croct slot, and Croct takes over delivering the right variant to each visitor, falling back to the original Strapi content when no personalization applies
 
-- Navigate to your project folder by running `cd launchpad`.
+## Getting started
 
-## 2. Set up environment variables
+Follow these steps to run the project locally.
 
-Before you take off, set up the required environment variables for both Strapi and Next.js.
+### Prerequisites
 
-To create the Strapi .env file, copy the content of the `./strapi/.env.example` file into a new file named `./strapi/.env`, then modify the values to match your setup:
+- Node.js 18 to 22 (Strapi does not support newer versions)
+- A [Croct](https://app.croct.com) workspace
 
-```sh
-cp ./strapi/.env.example ./strapi/.env
-```
+### 1. Clone and install
 
-Then do the same for the Next.js .env file, and modify it too:
-
-```sh
-cp ./next/.env.example ./next/.env
-```
-
-## 3. Start Strapi
-
-Take a deep breath. It's time to power up the Strapi engines. Navigate to your ./my-projects/launchpad/strapi folder by running:
-
-Navigate to your `./my-projects/launchpad/strapi` folder by running `cd strapi` from your command line.
-
-- Run the following command in your `./launchpad/strapi` folder:
-
-```
-yarn && yarn seed && yarn develop
+```bash
+git clone https://github.com/croct-tech/croct-strapi-project.git
+cd croct-strapi-project
+yarn setup
 ```
 
-This will install dependencies, sprinkle in some data magic, and run the server. (You can run these commands separately, but why not be efficient?)
+This installs the dependencies of both apps and creates the `.env` files from the `.env.example` templates.
 
-## 4. Start Next.js
+### 2. Set up Croct
 
-We're almost ready for lift-off! Next.js is your sleek, futuristic interface for getting all that glorious content out into the world. 🚀
+Run the Croct CLI in the `next` directory to configure the application ID and API key automatically:
 
-Open a new terminal tab or window to leave Strapi running, and navigate to your `./my-projects/launchpad/next` folder by running `cd next`.
-
-- Run the following command in your `./launchpad/next` folder
-
-```
-yarn && yarn build && yarn start
+```bash
+cd next
+npx croct init
 ```
 
-This installs dependencies, builds your project, and starts your server. You’re now a spacefaring content master!
+### 3. Seed Strapi
 
-## Features Overview ✨
+Import the demo content into Strapi:
 
-### User
+```bash
+yarn seed
+```
 
-<br />
+### 4. Run
 
-**An intuitive, minimal editor** The editor allows you to pull in dynamic blocks of content. It’s 100% open-source, and it’s fully extensible.<br />
-**Media Library** Upload images, video or any files and crop and optimize their sizes, without quality loss.<br />
-**Flexible content management** Build any type of category, section, format or flow to adapt to your needs. <br />
-**Sort and Filter** Built-in sorting and filtering: you can manage thousands of entries without effort.<br />
-**User-friendly interface** The most user-friendly open-source interface on the market.<br />
-**SEO optimized** Easily manage your SEO metadata with a repeatable field and use our Media Library to add captions, notes, and custom filenames to optimize the SEO of media assets.<br /><br />
+Start Strapi and Next.js together:
 
-### Global
+```bash
+yarn dev
+```
 
-<br />
+Open [http://localhost:3000](http://localhost:3000) for the website and [http://localhost:1337/admin](http://localhost:1337/admin) for the Strapi admin panel.
 
-[Customizable API](https://strapi.io/features/customizable-api): Automatically build out the schema, models, controllers for your API from the editor. Get REST or GraphQL API out of the box without writing a single line of code.<br />
-[Media Library](https://strapi.io/features/media-library): The media library allows you to store your images, videos and files in your Strapi admin panel with many ways to visualize and manage them.<br />
-[Role-Based Access Control (RBAC)](https://strapi.io/features/custom-roles-and-permissions): Role-Based Access Control is a feature available in the Administration Panel settings that let your team members have access rights only to the information they need.<br />
-[Internationalization (i18n)](https://strapi.io/features/internationalization): Internationalization (i18n) lets you create many content versions, also called locales, in different languages and for different countries.<br />
-[Audit Logs](https://strapi.io/blog/reasons-and-best-practices-for-using-audit-logs-in-your-application)The Audit Logs section provides a searchable and filterable display of all activities performed by users of the Strapi application<br />
-[Data transfer](https://strapi.io/blog/importing-exporting-and-transferring-data-with-the-strapi-cli) Streams your data from one Strapi instance to another Strapi instance.<br />
-[Review Worfklows](https://docs.strapi.io/user-docs/settings/review-workflows) Create and manage any desired review stages for your content, enabling your team to collaborate in the content creation flow from draft to publication. <br />
+## How the integration works
 
-## Resources
+Adding Croct to an existing Strapi + Next.js project takes three small changes, with no restructuring of your content or pages required. Check the [diff against LaunchPad](https://github.com/strapi/LaunchPad/compare/main...croct-tech:croct-strapi-project:main) to see the exact changes.
 
-[Docs](https://docs.strapi.io) • [Demo](https://strapi.io/demo) • [Forum](https://forum.strapi.io/) • [Discord](https://discord.strapi.io) • [Youtube](https://www.youtube.com/c/Strapi/featured) • [Strapi Design System](https://design-system.strapi.io/) • [Marketplace](https://market.strapi.io/) • [Cloud Free Trial](https://cloud.strapi.io)
+**1. Wrap the middleware with `withCroct`**
 
-## Todo
+```ts
+// next/middleware.ts
+import {withCroct} from '@croct/plug-next/middleware';
 
-- [ ] Implement the official Strapi SEO plugin
-- [ ] Implement the community Strapi preview plugin
-- [ ] Create localized content for the pricing plans and products
-- [ ] Populate creator fields when it'll work on Strapi 5 (article authors information are missing)
+export const middleware = withCroct({
+    matcher: config.matcher,
+    next: request => {
+        // Your existing middleware logic (e.g. locale redirects)
+    },
+});
+```
 
-## Customization
+**2. Add the `<CroctProvider>`**
 
-- The Strapi application contains a custom population middleware in order to populate more data than what it is set by default. You can find it in the `./strapi/src/middlewares/deepPopulate.ts` file.
+```tsx
+// next/app/layout.tsx
+import {CroctProvider} from '@croct/plug-next/CroctProvider';
 
-- The Strapi application contains a postinstall script that will regenerate an uuid for the project in order to get some anonymous usage information concerning this demo. You can disable it by removing the uuid inside the `./strapi/packages.json` file.
+<CroctProvider>
+    {children}
+</CroctProvider>
+```
 
-- The Strapi application contains a patch for the @strapi/admin package. It is only necessary for the hosted demos since we automatically create the Super Admin users for them when they request this demo on our website.
+**3. Map dynamic zones to Croct slots**
+
+A single Croct slot holds a map from Strapi dynamic zone components to Croct slots. When rendering a page, each dynamic zone component with a mapping gets its content from Croct, using the original Strapi content as fallback:
+
+```tsx
+// next/app/[locale]/(marketing)/page.tsx
+const {content} = await fetchContent(mapping.slot, {
+    preferredLocale: params.locale,
+    fallback: zone,
+});
+```
+
+That's it. Once integrated, any component managed in Strapi becomes personalizable and ready for A/B testing through Croct. Mapping a new component to a slot requires no code changes.
+
+## Docs
+
+For more details on the tools used in this project, refer to the official documentation:
+
+- [Croct docs](https://docs.croct.com)
+- [Croct Next.js SDK](https://docs.croct.com/reference/sdk/nextjs/installation)
+- [Strapi docs](https://docs.strapi.io)
+- [Next.js docs](https://nextjs.org/docs)

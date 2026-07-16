@@ -1,8 +1,7 @@
+import { CroctProvider } from "@croct/plug-next/CroctProvider";
 import type { Viewport } from "next";
 import { Locale, i18n } from '@/i18n.config'
-
 import "./globals.css";
-
 import { SlugProvider } from "./context/SlugContext";
 
 export const viewport: Viewport = {
@@ -23,13 +22,13 @@ export default function RootLayout({
   children: React.ReactNode
   params: { lang: Locale }
 }) {
-  return (
-    <html lang={params.lang} suppressHydrationWarning>
-      <body suppressHydrationWarning>
-        <SlugProvider>
+  return (<html lang={params.lang} suppressHydrationWarning>
+    <body suppressHydrationWarning>
+      <SlugProvider>
+        <CroctProvider>
           {children}
-        </SlugProvider>
-      </body>
-    </html>
-  );
+        </CroctProvider>
+      </SlugProvider>
+    </body>
+  </html>);
 }

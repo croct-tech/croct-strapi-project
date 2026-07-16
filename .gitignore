@@ -1,4 +1,12 @@
 node_modules
 .DS_Store
 .vscode
+.idea
+
+# env files (use the .env.example files as templates)
 .env
+.env.*
+!.env.example
+
+# logs
+*.log

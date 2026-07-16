@@ -1,7 +1,7 @@
 {
-  "name": "strapi-next-launchpad-example",
+  "name": "croct-strapi-project",
   "version": "1.0.0",
-  "description": "Next.js Launchpad Example powered by Strapi",
+  "description": "Strapi LaunchPad demo personalized with Croct",
   "type": "module",
   "scripts": {
     "next": "yarn dev --prefix ../next/",
@@ -10,8 +10,8 @@
     "setup:strapi": "cd strapi && yarn && node --loader ts-node/esm ../scripts/copy-env.mts ./",
     "setup": "yarn install && yarn setup:next && yarn setup:strapi",
     "dev": "yarn concurrently \"cd strapi && yarn develop\" \"npx wait-on http://localhost:1337 && cd next && yarn dev\"",
-    "seed": "cd strapi && yarn strapi import -f ./data/export_20250116105447.tar.gz --force",
-    "export": "cd strapi && yarn strapi export --no-encrypt -f ./data/export_20250116105447",
+    "seed": "cd strapi && yarn strapi import -f ./data/export_20260716112227.tar.gz --force",
+    "export": "cd strapi && yarn strapi export --no-encrypt -f ./data/export_20260716112227",
     "repo:upstream": "git fetch upstream && git merge upstream/main"
   },
   "dependencies": {
